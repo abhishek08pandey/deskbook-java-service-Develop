@@ -13,8 +13,11 @@ import com.onerivet.deskbook.models.payload.WorkingDayDto;
 import com.onerivet.deskbook.models.response.GenericResponse;
 import com.onerivet.deskbook.services.WorkingDayService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @Validated
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/api/deskbook")
 public class WorkingDayController {
 	

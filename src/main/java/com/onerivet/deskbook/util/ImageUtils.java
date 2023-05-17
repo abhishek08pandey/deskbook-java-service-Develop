@@ -7,8 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
@@ -24,7 +22,7 @@ import jakarta.xml.bind.DatatypeConverter;
 
 @Component
 public class ImageUtils {
-	
+
 	@Value("${image.upload.path}")
 	String urlPath;
 
@@ -38,20 +36,16 @@ public class ImageUtils {
 	}
 
 	public String base64ToFile(String base64String, String firstName, String id) throws IOException {
-		
-		
 
 		List<String> validBase64 = validate(base64String);
-		  
+
 		File f = new File(urlPath);
-		if(!f.exists()) {
+		if (!f.exists()) {
 			Files.createDirectories(Paths.get(urlPath, firstName + "_" + id + validBase64.get(1)).getParent());
-			
+
 		}
 
 		byte[] decodedBytes = DatatypeConverter.parseBase64Binary(validBase64.get(0));
-
-		// byte[] data = Base64.getDecoder().decode(image);
 
 		ByteArrayInputStream bis = new ByteArrayInputStream(decodedBytes);
 		BufferedImage image1 = ImageIO.read(bis);

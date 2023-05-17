@@ -41,7 +41,7 @@ public class ProfileMapper {
 		
 		
 		if(employee.getProfilePictureFileName() != null && employee.getProfilePictureFilePath() != null) {
-			profile.setProfilePictureFilePath(imageUtils.encodeImage(employee.getProfilePictureFilePath()));
+			profile.setProfilePictureFileString(imageUtils.encodeImage(employee.getProfilePictureFilePath()));
 		}
 
 		profile.setEmailId(employee.getEmailId());
@@ -52,7 +52,6 @@ public class ProfileMapper {
 		if(employee.getDesignation()!=null)
 			profile.setDesignation(this.modelMapper.map(employee.getDesignation(), DesignationDto.class));
 
-		profile.setProject(employee.getProject());
 
 		if (seatConfiguration != null) {
 			profile.setCity(this.modelMapper.map(seatConfiguration.getSeatNumber().getColumn().getFloor().getCity(),
@@ -65,6 +64,7 @@ public class ProfileMapper {
 			profile.getSeat().setBooked(true);
 		}
 
+
 		if (employee.getModeOfWork() != null) {
 			profile.setModeOfWork(this.modelMapper.map(employee.getModeOfWork(), ModeOfWorkDto.class));
 
@@ -75,7 +75,6 @@ public class ProfileMapper {
 						days.add(this.modelMapper.map(day.getDay(), WorkingDayDto.class));
 				}
 				
-			
 			} else if (employee.getModeOfWork().getId() == 3) {
 				days.add(this.modelMapper.map(new WorkingDay(1, "Monday"), WorkingDayDto.class));
 				days.add(this.modelMapper.map(new WorkingDay(2, "Tuesday"), WorkingDayDto.class));

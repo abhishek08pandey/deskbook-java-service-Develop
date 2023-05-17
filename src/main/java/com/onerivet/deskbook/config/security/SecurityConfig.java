@@ -23,7 +23,7 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().and()
 				.authorizeHttpRequests((authorize) -> authorize
-						.requestMatchers("/api/deskbook", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
 						.anyRequest().authenticated())
 				.oauth2ResourceServer().jwt();
 
@@ -46,7 +46,7 @@ public class SecurityConfig {
 
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowCredentials(true).allowedMethods()
+				registry.addMapping("/**").allowCredentials(true).allowedMethods("PUT", "GET", "OPTIONS")
 						.allowedOriginPatterns("http://localhost:4200/", "https://deskbook-dev.1rivet.com:9444/");
 
 			}

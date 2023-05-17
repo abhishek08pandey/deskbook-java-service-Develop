@@ -18,7 +18,7 @@ import lombok.ToString;
 @ToString
 public class UpdateProfileDto {
 	
-	private String profilePictureFilePath;
+	private String profilePictureFileString;
 	
 	@NotEmpty(message = "Please enter your Name")
 	@Size(min = 2, message = "First name must be of 2 characters or more")
@@ -37,21 +37,23 @@ public class UpdateProfileDto {
 	@NotEmpty(message = "Please enter phone no.")
 	private String phoneNumber;
 
-	@Size(max = 200, message = "Exceeded maximum character limit of 200")
-	private String project;
 	
 	@NotNull(message = "Please select designation")
 	private Integer designation;
 
 	@NotNull(message = "Please select Mode of work")
 	private Integer modeOfWork;
-	
+	 
+	@NotNull(message = "Please select City")
 	private Integer city;
 	
+	@NotNull(message = "Please select Floor")
 	private Integer floor;
-
+	
+	@NotNull(message = "Please select Column")
 	private Integer column;
 	
+	@NotNull(message = "Please select Seat")
 	private Integer seat;
 	
 	private Integer[] workingDays;

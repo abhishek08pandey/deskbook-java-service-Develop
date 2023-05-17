@@ -9,9 +9,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -19,6 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "[Employee]", schema = "[dbo]")
+@Builder
+@ToString
 public class Employee {
 	@Id
 	@Column(name = "EmployeeId")
@@ -36,8 +40,6 @@ public class Employee {
 	@Column(name = "PhoneNumber")
 	private String phoneNumber;
 
-	@Column(name = "ProjectName")
-	private String project;
 	
 	@Column(name = "ProfilePictureFileName")
 	private String profilePictureFileName;

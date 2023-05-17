@@ -15,7 +15,7 @@ import lombok.Setter;
 public class ProfileViewDto {
 	
 
-	private String profilePictureFilePath;
+	private String profilePictureFileString;
 
 	private String emailId;
 
@@ -29,7 +29,6 @@ public class ProfileViewDto {
 	
 	private ModeOfWorkDto modeOfWork;
 
-	private String project;
 
 	private CityDto city;
 

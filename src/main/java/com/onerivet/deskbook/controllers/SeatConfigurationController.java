@@ -16,10 +16,12 @@ import com.onerivet.deskbook.models.payload.SeatNumberDto;
 import com.onerivet.deskbook.models.response.GenericResponse;
 import com.onerivet.deskbook.services.SeatConfigurationService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.constraints.Positive;
 
 @RestController
 @Validated
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/api/deskbook")
 public class SeatConfigurationController {
 	

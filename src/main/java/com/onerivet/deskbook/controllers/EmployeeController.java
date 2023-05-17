@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +19,13 @@ import com.onerivet.deskbook.models.payload.UpdateProfileDto;
 import com.onerivet.deskbook.models.response.GenericResponse;
 import com.onerivet.deskbook.services.EmployeeService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 
 @RestController
 @Validated
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/api/deskbook/user-profile")
 public class EmployeeController {
 
@@ -48,11 +49,15 @@ public class EmployeeController {
 	 */
 	@GetMapping("/")
 	public GenericResponse<ProfileViewDto> getById(Principal principal) throws Exception {
-		System.out.println(principal.getName());
 		GenericResponse<ProfileViewDto> genericResponse = new GenericResponse<>(this.employeeService.getEmployeeById(principal.getName()), null);
 		return genericResponse;
 	}
 	
+	/**
+	 * @purpose: Update employee by id
+	 * @param: updateProfileDto
+	 * @return: profileViewDto
+	 */
 	@PutMapping("/")
 	public ResponseEntity<GenericResponse<ProfileViewDto>> updateById(Principal principal, @RequestBody @Valid UpdateProfileDto newEmployee)
 			throws Exception {
