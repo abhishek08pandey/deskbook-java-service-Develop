@@ -23,6 +23,12 @@ public class DesignationServiceImpl implements DesignationService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	
+	public DesignationServiceImpl(DesignationRepo designationRepol, ModelMapper modelMapper) {
+		this.designationRepo=designationRepo;
+		this.modelMapper=modelMapper;
+	}
+	
 	@Override
 	public List<DesignationDto> getAllDesignations() {
 		return this.designationRepo.findAll().stream()

@@ -25,11 +25,16 @@ import com.onerivet.deskbook.util.ProfileMapper;
 import com.onerivet.deskbook.util.UpdateSeatUtils;
 
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 
 @Transactional
 @Service
+@AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
+	public EmployeeServiceImpl(EmployeeRepo employeeRepo) {
+		
+	}
 	@Autowired
 	private EmployeeRepo employeeRepo;
 
@@ -54,10 +59,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Value("${image.upload.path}")
 	String path;
 	
-	public EmployeeServiceImpl(EmployeeRepo employeeRepo, SeatConfigurationRepo SeatConfigurationRepo,EmployeeWorkingDaysRepo employeeWorkingDaysRepo, WorkingDaysRepo workingDaysRepo ) {
-		this.seatConfigurationRepo=seatConfigurationRepo;
-	}
-
 	@Override 
 	public List<EmployeeDto> getAllEmployees() {
 		return this.employeeRepo.findAll().stream().map((employee) -> this.modelMapper.map(employee, EmployeeDto.class))
