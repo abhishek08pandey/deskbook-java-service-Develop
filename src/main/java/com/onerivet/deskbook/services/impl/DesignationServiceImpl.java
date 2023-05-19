@@ -24,7 +24,7 @@ public class DesignationServiceImpl implements DesignationService {
 	private ModelMapper modelMapper;
 
 	
-	public DesignationServiceImpl(DesignationRepo designationRepol, ModelMapper modelMapper) {
+	public DesignationServiceImpl(DesignationRepo designationRepo, ModelMapper modelMapper) {
 		this.designationRepo=designationRepo;
 		this.modelMapper=modelMapper;
 	}

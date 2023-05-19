@@ -68,7 +68,7 @@ public class UpdateSeatUtils {
 		}
 			
 		if ((newEmployeeDto.getModeOfWork() == 3 || newEmployeeDto.getModeOfWork() == 2)
-				&& newEmployeeDto.getWorkingDays() != null && newEmployeeDto.getWorkingDays().length != 0) {
+				&& newEmployeeDto.getWorkingDays() != null && newEmployeeDto.getWorkingDays().size() != 0) {
 			throw new IllegalArgumentException("You cannot select working day");
 		}
 
@@ -76,7 +76,7 @@ public class UpdateSeatUtils {
 			throw new IllegalArgumentException("Please select Days");
 		}
 		
-		if (newEmployeeDto.getModeOfWork() == 1 && newEmployeeDto.getWorkingDays().length >= 5)
+		if (newEmployeeDto.getModeOfWork() == 1 && newEmployeeDto.getWorkingDays().size() >= 5)
 			throw new IllegalArgumentException("You can select Maximum 4 days");
 
 	

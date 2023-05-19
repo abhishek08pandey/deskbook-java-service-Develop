@@ -24,6 +24,11 @@ public class ModeOfWorkServiceImpl implements ModeOfWorkService {
 	@Autowired
 	private ModelMapper modelMapper;
 	
+	public ModeOfWorkServiceImpl(ModeOfWorkRepo modeOfWorkRepo, ModelMapper modelMapper) {
+		this.modeOfWorkRepo=modeOfWorkRepo;
+		this.modelMapper=modelMapper;
+	}
+
 	@Override
 	public List<ModeOfWorkDto> getAllModeOfWorks() {
 		return this.modeOfWorkRepo.findAll().stream()

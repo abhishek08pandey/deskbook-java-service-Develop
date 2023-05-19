@@ -20,6 +20,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "[Designation]", schema = "[Ref]")
 public class Designation {
+
 	@Id
 	@Column(name = "DesignationId")
 	private int id;

@@ -1,6 +1,8 @@
 package com.onerivet.deskbook.models.payload;
 
 
+import java.util.Set;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -56,7 +58,7 @@ public class UpdateProfileDto {
 	@NotNull(message = "Please select Seat")
 	private Integer seat;
 	
-	private Integer[] workingDays;
+	private Set<Integer> workingDays;
 
 	private boolean isActive;
 }
